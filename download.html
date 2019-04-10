@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Download</title>
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+	<script type="text/javascript">  
+    var phoneWidth =  parseInt(window.screen.width);  
+    var phoneScale = phoneWidth/740;  
+    var ua = navigator.userAgent;  
+    if (/Android (\d+\.\d+)/.test(ua)){  
+        var version = parseFloat(RegExp.$1);  
+        if(version>2.3){  
+            document.write('<meta name="viewport" content="width=720, minimum-scale = '+phoneScale+', maximum-scale = '+phoneScale+', target-densitydpi=device-dpi">');  
+        }else{  
+            document.write('<meta name="viewport" content="width=720, target-densitydpi=device-dpi">');  
+        }  
+    } else {  
+        document.write('<meta name="viewport" content="width=720, user-scalable=no,">');  
+    }  
+</script>
+
+	</head>
+	<body style="background-image:url(images/index.png);background-position-x:center;background-size:100%;background-repeat:no-repeat">
+		
+
+		<div style='background-image:url(images/android.png);width:300px;height:120px;background-position-x:center;background-size:100%;background-repeat:no-repeat;position:relative;left:30px;top:880px;'>
+			
+		</div>
+		
+		<div style='background-image:url(images/ios.png);width:300px;height:120px;background-position-x:center;background-size:100%;background-repeat:no-repeat;position:relative;left:374px;top:761px;'>
+			
+		</div>
+		
+	</body>
+</html>
+
