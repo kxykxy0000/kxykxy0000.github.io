@@ -7,14 +7,7 @@
 	<meta name="description" content="" />
 	<meta name="keywords" content="" />
 	<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-	<style>
-		.body{
-			background-image:url(images/download.png);background-position-x:center;background-size:100%;background-repeat:no-repeat;
-		}
-		.wxtip{background: rgba(0,0,0,0.8); text-align: center; position: fixed; left:0; top: 0; width: 100%; height: 100%; z-index: 998; display: none;}
-		.wxtip-icon{width: 52px; height: 67px; background: url(images/download.png) no-repeat; display: block; position: absolute; right: 20px; top: 20px;}
-		.wxtip-txt{margin-top: 107px; color: #fff; font-size: 16px; line-height: 1.5;}
-	</style>
+
 	<script type="text/javascript">  
     var phoneWidth =  parseInt(window.screen.width);  
     var phoneScale = phoneWidth/740;  
@@ -28,67 +21,23 @@
         }  
     } else {  
         document.write('<meta name="viewport" content="width=720, user-scalable=no,">');  
-    }
-
-    function weixinTip(ele){
-      var ua = navigator.userAgent;
-      var isWeixin = !!/MicroMessenger/i.test(ua);
-      if(isWeixin){
-        ele.onclick=function(e){
-          window.event? window.event.returnValue = false : e.preventDefault();
-          document.getElementById('JweixinTip').style.display='block';
-        }
-        document.getElementById('JweixinTip').onclick=function(){
-          this.style.display='none';
-        }
-      }
-    }
-    var btn1 = document.getElementById('JdownApp');//下载一
-    weixinTip(btn1);
-    var btn2 = document.getElementById('JdownApp2'); //下载二
-    weixinTip(btn2);
-
-   function downloadApp() {
-     var ua = navigator.userAgent.toLowerCase();
-     //系统判断
-     if(ua.match(/iPhone/i)=="iphone") {//iphone
-       if(ua.match(/MicroMessenger/i)=="micromessenger") {
-         //是微信
-         window.event? window.event.returnValue = false : e.preventDefault();
-         document.getElementById('JweixinTip').style.display='block';
-       }else{
-         window.location.href='https://itunes.apple.com/cn/app/%E9%92%89%E5%8D%95/id1459206673?mt=8';
-       }
-     }else if(ua.match(/Android/i)=="android"){//android
-       if(ua.match(/MicroMessenger/i)=="micromessenger") {
-				//是微信
-         window.event? window.event.returnValue = false : e.preventDefault();
-         document.getElementById('JweixinTip').style.display='block';
-       }else{
-         window.location.href='https://android.myapp.com/myapp/detail.htm?apkName=net.nbyjy.b2b&ADTAG=mobile';
-       }
-     }else{//其他
-
-     }
-   }
+    }  
 </script>
 
 	</head>
-	<body class="body">
-	<div class="wxtip" id="JweixinTip">
-	<span class="wxtip-icon"></span>
-	<p class="wxtip-txt">点击右上角<br/>选择在浏览器中打开</p>
-	</div>
+	<body style="background-image:url(images/download.png);background-position-x:center;background-size:100%;background-repeat:no-repeat">
 		
- 		<div onclick="javasrcipt:(window.location.href='http://yijiayi.oss-cn-shenzhen.aliyuncs.com/app-release.apk')" style='background-image:url(images/android_download.png);width:300px;height:120px;background-position-x:center;background-size:100%;background-repeat:no-repeat;position:relative;left:30px;top:880px;'>
+
+		
+<!-- 		<div onclick="javasrcipt:(window.location.href='http://yijiayi.oss-cn-shenzhen.aliyuncs.com/app-release.apk')" style='background-image:url(images/android_download.png);width:300px;height:120px;background-position-x:center;background-size:100%;background-repeat:no-repeat;position:relative;left:30px;top:880px;'>
+
+		</div> -->
+		<div onclick="javasrcipt:(window.location.href='https://android.myapp.com/myapp/detail.htm?apkName=net.nbyjy.b2b&ADTAG=mobile')" style='background-image:url(images/android_download.png);width:300px;height:120px;background-position-x:center;background-size:100%;background-repeat:no-repeat;position:relative;left:30px;top:880px;'>
 
 		</div>
-		<div onclick="downloadApp" style='background-image:url(images/android_download.png);width:300px;height:120px;background-position-x:center;background-size:100%;background-repeat:no-repeat;position:relative;left:30px;top:880px;'>
-
-		</div>
-
+		
 		<div onclick="javasrcipt:(window.location.href='https://itunes.apple.com/cn/app/%E9%92%89%E5%8D%95/id1459206673?mt=8')" style='background-image:url(images/ios_download.png);width:300px;height:120px;background-position-x:center;background-size:100%;background-repeat:no-repeat;position:relative;left:374px;top:761px;'>
-
+			
 		</div>
 	</body>
 </html>
