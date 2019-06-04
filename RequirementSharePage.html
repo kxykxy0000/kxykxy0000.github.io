@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]>
+<html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>
+<html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>
+<html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en"> <!--<![endif]-->
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="author" content="Ray">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>需求订单分享</title>
+
+    <!-- STYLES -->
+    <link rel="stylesheet" type="text/css" href="css/base.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/960.css"/>
+
+    <script src="jquery/jquery-3.4.1.min.js"></script>
+
+    <script>
+        function aa() {
+            $('#jglx').html('111111');
+            // $.ajax({
+            //     url:"/jquery/test1.txt",
+            // });
+        }
+    </script>
+
+    <script type="text/javascript">
+        function appLink(){
+            window.location = 'zjmobile://platformapi/startapp';
+            var clickedAt = +new Date;
+            setTimeout(function(){
+                !window.document.webkitHidden && setTimeout(function(){
+                    if (+new Date - clickedAt < 2000){
+                        window.location = 'https://itunes.apple.com/us/app/zhe-jiang-yi-dong-shou-ji/id898243566#weixin.qq.com';
+                    }
+                }, 500);
+            }, 500)
+
+        }
+    </script>
+</head>
+
+<body style="background-color: #f0f0f0">
+<div class="body-wrapper">
+    <div class="controller">
+        <div class="controller2">
+
+            <!-- Header -->
+            <header id="header">
+                <div>
+                    <div class="logo">
+                        <a href="#" onclick="appLink()"><img src="img/dingdan.png" alt="钉单" height="170px" width="100%"/></a>
+                    </div>
+                </div>
+            </header>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="main-product-info">
+        <div class="" style="width: 100%;">
+            <table bordercolor="#000000" cellspacing="1px" cellpadding="0"
+                   style="border-collapse:collapse;height: 60px;margin-bottom: 0;background-color: #FFFFFF">
+                <tr>
+                    <td rowspan="3" width="60px" height="60px" style="border: 1px;">
+                        <div style="border: 1px solid #CCCCCC;background-color: #f0f0f0">
+                            <img src="img/logo2.png" alt="MyPassion" width="60px" height="60px"/>
+                        </div>
+                    </td>
+                    <td style="border:1px;line-height:0px;" height="10px;">
+                        <span style="color: #000;font-size: 14px">
+                            超级宽松女式运动服
+                        </span>
+                    </td>
+                </tr>
+                <tr style="max-height: 30px">
+                    <td style="border:1px;line-height:0px;">
+                            <span style="color: #000;background-color:gainsboro;">
+                            货号：41564131313
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border:1px;line-height:0px;">
+                            <span style="color: #000;background-color: lightpink;">
+                            衬衫   6件
+                        </span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="main-product-info">
+        <div class="main-order-info">
+            <table class="main-order-info-tab" frame="void"
+                   border="0px" bordercolor="#000000" cellspacing="0px" cellpadding="0"
+                   style="border:0px;border-collapse:collapse;height: 200px;background-color: #FFFFFF">
+                <tr style="height: 50px;">
+                    <td style="height: 30px;border-left: 0px; border-right: 0px; ">
+                        <p>
+                            期望价格
+                        </p>
+                    </td>
+                    <td align="right" style="border-left: 0px; border-right: 0px;">
+                        <p>
+                            *****
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left: 0px; border-right: 0px; ">
+                        <p>
+                            加工类型
+                        </p>
+                    </td>
+                    <td align="right" style="border-left: 0px; border-right: 0px; ">
+                        <p id="jglx">
+                            *****
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left: 0px; border-right: 0px; ">
+                        <p>
+                            交货时间
+                        </p>
+                    </td>
+                    <td align="right" style="border-left: 0px; border-right: 0px; ">
+                        <p>
+                            *****
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left: 0px; border-right: 0px; ">
+                        <p>
+                            是否需要打样
+                        </p>
+                    </td>
+                    <td align="right" style="border-left: 0px; border-right: 0px; ">
+                        <p>
+                            *****
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left: 0px; border-right: 0px; ">
+                        <p>
+                            是否提供样衣
+                        </p>
+                    </td>
+                    <td align="right" style="border-left: 0px; border-right: 0px; ">
+                        <p>
+                            *****
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left: 0px; border-right: 0px; ">
+                        <p>
+                            生产地区
+                        </p>
+                    </td>
+                    <td align="right" style="border-left: 0px; border-right: 0px; ">
+                        <p>
+                            *****
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-left: 0px; border-right: 0px;border-bottom: 1px;">
+                        <p>
+                            是否开票
+                        </p>
+                    </td>
+                    <td align="right" style="border-left: 0px; border-right: 0px;border-bottom: 1px;">
+                        <p>
+                            *****
+                        </p>
+                    </td>
+                </tr>
+                <tr style="background-color: #f0f0f0;height: 5px;padding: 0px;">
+                    <td colspan="2" style="border: 0px;height: 5px;padding: 0px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="border-left: 0px; border-right: 0px; border-bottom: 1px;">
+                        <p>
+                            备注
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="4" colspan="2" style="border-left: 0px; border-right: 0px; border-bottom: 1px;">
+                        <p>
+                            *******************************
+                        </p>
+                    </td>
+                </tr>
+                <tr></tr><tr></tr><tr></tr><tr></tr>
+
+                <tr style="background-color: #f0f0f0;height: 5px;padding: 0px;">
+                    <td colspan="2" style="border: 0px;height: 5px;padding: 0px;">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="border-left: 0px; border-right: 0px; border-bottom: 1px;">
+                        <p>
+                            需求订单号：TRO000001****
+                        </p>
+                        <p>
+                            发布时间：2019年6月4日
+                        </p>
+                    </td>
+                </tr>
+                <tr style="background-color: #f0f0f0;height: 35px;padding: 0px;">
+                    <td colspan="2" style="border: 0px;height: 35px;padding: 0px;">
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+    <div class="main-product-info" style="height: 2px;width: 100%;float: left;">
+        <table>
+            <tr>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <div class="main-product-info" style="background-color: #FFFFFF;float: left;position:fixed;bottom:0;z-index:999">
+        <table border="0px" bordercolor="#000000" cellspacing="0px" cellpadding="0"
+               style="border:0px;border-collapse:collapse;background-color: #FFFFFF">
+            <tr style="border-top: 1px solid #CCCCCC;">
+                <td width="40px">
+                    <img src="img/avatar.png" height="30" width="30"/>
+                </td>
+                <td style="text-align: left;">
+                    <p>森马服装有限公司</p>
+                </td>
+                <td style="text-align: right;width: 70px;">
+                    <img src="img/sms-4.ico" height="15" width="15"/>
+                    <span style="color: #6c6c6c">李小姐</span>
+                </td>
+                <td style="text-align: right;width: 70px;">
+                    <input type="button" style="background-color: #e9bd61" height="25px" width="60px" value="去报价" onclick="aa()" />
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+
+</body>
