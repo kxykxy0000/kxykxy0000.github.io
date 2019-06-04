@@ -17,7 +17,7 @@
 
     <!-- STYLES -->
     <link rel="stylesheet" type="text/css" href="css/base.css"/>
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
     <link rel="stylesheet" type="text/css" href="css/960.css"/>
 
     <script src="js/jquery-3.4.1.min.js"></script>
@@ -33,15 +33,15 @@
 
     <script type="text/javascript">
         function appLink(){
-            window.location = 'zjmobile://platformapi/startapp';
-            var clickedAt = +new Date;
-            setTimeout(function(){
-                !window.document.webkitHidden && setTimeout(function(){
-                    if (+new Date - clickedAt < 2000){
-                        window.location = 'https://itunes.apple.com/us/app/zhe-jiang-yi-dong-shou-ji/id898243566#weixin.qq.com';
-                    }
-                }, 500);
-            }, 500)
+            window.location = 'nbyjy://callphone/startapp';
+            // var clickedAt = +new Date;
+            // setTimeout(function(){
+            //     !window.document.webkitHidden && setTimeout(function(){
+            //         if (+new Date - clickedAt < 2000){
+            //             window.location = 'https://itunes.apple.com/us/app/zhe-jiang-yi-dong-shou-ji/id898243566#weixin.qq.com';
+            //         }
+            //     }, 500);
+            // }, 500)
 
         }
     </script>
