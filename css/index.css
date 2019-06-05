@@ -161,9 +161,9 @@ body {
     clear: both;
     display: block;
     position: relative;
-    filter:alpha(opacity=60); /*IE*/
-    -moz-opacity:0.6; /*火狐*/
-    opacity:0.6; /*opera (CSS3标准)*/
+    /*filter:alpha(opacity=60); !*IE*!*/
+    /*-moz-opacity:0.6; !*火狐*!*/
+    /*opacity:0.6; !*opera (CSS3标准)*!*/
 }
 
 .main-container {
