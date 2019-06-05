@@ -107,15 +107,16 @@ body {
     z-index: 70;
     background: #FFF;
     width: 100%;
+    height: auto;
     /*width: 300px;*/
     /*height: 300px*/
 }
 
 .main-under-div {
-    width: 92%;
-    margin-left: 4%;
-    margin-right: 4%;
-    margin-top: 2%;
+    width: 74%;
+    margin-left: 13%;
+    margin-right: 13%;
+    margin-top: 18%;
     border: 1px solid #c5c5c5;
     filter:alpha(opacity=90); /*IE*/
     -moz-opacity:0.9; /*火狐*/
@@ -123,7 +124,10 @@ body {
 }
 
 .main-above-div{
-    padding-top: 180px;
+    padding-top: 235px;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .main-above-div2{
@@ -131,18 +135,18 @@ body {
 }
 
 .successIcon{
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     background:url(../images/success.png) no-repeat;
-    background-size:10px;
+    background-size:12px;
     display: inline-block;
 }
 
 .currentIcon{
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     background:url(../images/right.png) no-repeat;
-    background-size:10px;
+    background-size:12px;
     display: inline-block;
 }
 
