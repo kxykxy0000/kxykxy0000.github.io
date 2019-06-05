@@ -126,6 +126,10 @@ body {
     padding-top: 180px;
 }
 
+.main-above-div2{
+    padding-top: 150px;
+}
+
 .successIcon{
     width: 10px;
     height: 10px;
@@ -156,6 +160,13 @@ body {
     filter:alpha(opacity=60); /*IE*/
     -moz-opacity:0.6; /*火狐*/
     opacity:0.6; /*opera (CSS3标准)*/
+}
+
+.main-container {
+    width: 100%;
+    clear: both;
+    display: block;
+    position: relative;
 }
 
 /*------------------------------------------------------------------*/
@@ -1173,7 +1184,6 @@ table {
     width: 100%;
     text-align: left;
     border-spacing: 0;
-    color: #ffffff;
 }
 
 table th {
@@ -1182,7 +1192,7 @@ table th {
 }
 
 table td {
-    border-bottom: 1px solid #c5c5c5;
+    border-bottom: 1px solid #f0f0f0;
     padding: 10px;
 }
 
