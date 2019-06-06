@@ -77,6 +77,28 @@ body {
 .main-product-info {
     width: 100%;
     float: left;
+    background-color: #FFFFFF;
+    float: left;
+    position: fixed;
+    bottom: 0px;
+    z-index: 999
+}
+
+
+
+.header-img-describe {
+    position: absolute;
+    z-indent: 2;
+    left: 0;
+    top: 160px;
+    width: 100%;
+    height: 40px;
+    background-color: #f0f0f0;
+    filter: alpha(opacity=80); /*IE*/
+    -moz-opacity: 0.8; /*火狐*/
+    opacity: 0.8; /*opera (CSS3标准)*/
+    display: table-cell;
+    vertical-align: middle;
 }
 
 .main-order-info {
@@ -97,9 +119,9 @@ body {
     position: absolute;
     z-index: 80;
     width: 100%;
-    filter:alpha(opacity=60); /*IE*/
-    -moz-opacity:0.6; /*火狐*/
-    opacity:0.6; /*opera (CSS3标准)*/
+    filter: alpha(opacity=60); /*IE*/
+    -moz-opacity: 0.6; /*火狐*/
+    opacity: 0.6; /*opera (CSS3标准)*/
 }
 
 .main-above {
@@ -108,9 +130,9 @@ body {
     background: #FFF;
     width: 100%;
     height: auto;
-    filter:alpha(opacity=60); /*IE*/
-    -moz-opacity:0.6; /*火狐*/
-    opacity:0.6; /*opera (CSS3标准)*/
+    filter: alpha(opacity=60); /*IE*/
+    -moz-opacity: 0.6; /*火狐*/
+    opacity: 0.6; /*opera (CSS3标准)*/
 }
 
 .main-under-div {
@@ -119,39 +141,115 @@ body {
     margin-right: 13%;
     margin-top: 18%;
     border: 1px solid #c5c5c5;
-    filter:alpha(opacity=90); /*IE*/
-    -moz-opacity:0.9; /*火狐*/
-    opacity:0.9; /*opera (CSS3标准)*/
+    filter: alpha(opacity=90); /*IE*/
+    -moz-opacity: 0.9; /*火狐*/
+    opacity: 0.9; /*opera (CSS3标准)*/
 }
 
-.main-above-div{
+.main-above-div {
     margin-top: 235px;
     width: 80%;
     margin-left: 10%;
     margin-right: 10%;
 }
 
-.main-above-div2{
+.main-under-factory {
+    position: absolute;
+    z-index: 999;
+    background: #FFF;
+    width: 100%;
+    height: auto;
+}
+
+.main-under-factory-info {
+    width: 100%;
+}
+
+.main-under-factory-info table {
+    width: 100%;
+    border-spacing: 0;
+    border: 0px;
+}
+
+.main-under-factory-info table th {
+    border: 0px;
+}
+
+.main-under-factory-info table td {
+    border: 0px;
+    padding: 10px;
+}
+
+.main-order-info-tab table {
+    width: 100%;
+    border-spacing: 0;
+    border: 0px;
+}
+
+.main-order-info-tab table th {
+    border: 0px;
+}
+
+.main-order-info-tab table td {
+    border: 0px;
+    padding: 10px;
+}
+
+.main-container-factory {
+    width: 100%;
+    clear: both;
+    display: block;
+    position: relative;
+}
+
+.main-above-factory {
+    position: absolute;
+    z-index: 70;
+    background: #FFF;
+    width: 100%;
+    height: auto;
+}
+
+.main-above-div2-factory {
     padding-top: 150px;
 }
 
-.successIcon{
+.main-above-div2 {
+    padding-top: 150px;
+}
+
+.main-above-div2 table {
+    width: 100%;
+    border-spacing: 0;
+    border: 0px;
+}
+
+.main-above-div2 table th {
+    border: 0px;
+}
+
+.main-above-div2 table td {
+    border: 0px;
+    padding: 10px;
+}
+
+.successIcon {
     width: 12px;
     height: 12px;
-    background:url(../images/success.png) no-repeat;
-    background-size:12px;
+    background: url(../images/success.png) no-repeat;
+    background-size: 12px;
     display: inline-block;
 }
 
-.currentIcon{
+.currentIcon {
     width: 12px;
     height: 12px;
-    background:url(../images/right.png) no-repeat;
-    background-size:12px;
+    background: url(../images/right.png) no-repeat;
+    background-size: 12px;
     display: inline-block;
 }
 
-.unexecutedIcon{
+.unexecutedIcon {
     width: 10px;
     height: 10px;
     display: inline-block;
