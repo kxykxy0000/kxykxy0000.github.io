@@ -22,27 +22,69 @@
 
     <script src="js/jquery-3.4.1.min.js"></script>
 
-    <script>
-        function aa() {
-            $('#jglx').html('111111');
-            // $.ajax({
-            //     url:"/jquery/test1.txt",
-            // });
-        }
-    </script>
-
     <script type="text/javascript">
-        function appLink(){
-            window.location = 'nbyjy://callphone/startapp';
-            // var clickedAt = +new Date;
-            // setTimeout(function(){
-            //     !window.document.webkitHidden && setTimeout(function(){
-            //         if (+new Date - clickedAt < 2000){
-            //             window.location = 'https://itunes.apple.com/us/app/zhe-jiang-yi-dong-shou-ji/id898243566#weixin.qq.com';
-            //         }
-            //     }, 500);
-            // }, 500)
+        $(document).ready(function(){
 
+        });
+
+        //请求后台获取数据
+        function getFactoryInfo(){
+            var param = {
+                "OrderStatus":["PENDING_QUOTE"]
+            };
+            $.ajax({
+                url:'https://47.106.112.137:9002/djwebservices/v2/b2b-apparel-zh/orders/requirement/countByStatuses',
+                data:JSON.stringify(param),
+                type:'POST',
+                contentType:'application/json',
+                success:function(data){
+                    alert(data);
+                },
+                error:function(data){
+
+                }
+            });
+        }
+
+        function appLink(){
+            var download_schema = 'nbyjy://callphone/startapp'; //app的协议有安卓同事提供，这里是用的淘宝
+            var universal_link = 'www.baidu.com';
+            var getVersionUrl = 'www.weibo.com';//Android移动端下载地址
+            var u = navigator.userAgent.toLocaleLowerCase();
+//console.log(u);
+            var isWeixin = u.match(/MicroMessenger/i) == 'micromessenger'; //判断是不是微信浏览器
+            var isAndroid = u.indexOf('android') > -1 || u.indexOf('linux') > -1; //android终端或者uc浏览器
+            var isiOS = !! u.match(/(iphone|ipod|ipad|mac)/i);
+
+            function openApp() {
+                //alert('1');
+                //alert(isAndroid);
+                //alert(isiOS);
+                if (isAndroid) {
+                    android1();
+                }
+                if (isiOS) {
+                    ios();
+                }
+                //alert("调用下载失败"); //此处弹窗时，是没有version参数，如果在app中打开，是会有这个参数的
+            }
+
+            function android1() {
+                //如果是微信,直接下载
+                if (isWeixin) {
+                    window.location.href = "Android下载地址 "; /***Android移动端下载地址***/
+                } else {
+                    window.location.href = download_schema; /***打开app的协议，有安卓同事提供***/
+                    window.setTimeout(function () {
+                        //window.location.href = "Android下载地址";/***Android移动端下载地址***/
+                        window.location.href = getVersionUrl; /***Android移动端下载地址***/
+                    }, 100);
+                }
+            }
+
+            function ios() {
+                window.location.href = universal_link + "?schema=" + encodeURIComponent(download_schema);
+            }
         }
     </script>
 </head>
@@ -242,7 +284,7 @@
 
     </div>
 
-    <div class="main-product-info">
+    <div class="main-product-info" onclick="appLink()">
         <table  cellspacing="0px" cellpadding="0"
                 style="border:0px;border-collapse:collapse;background-color: #ffd60c;height: 60px;">
             <tr style="border: 1px solid #CCCCCC;">
