@@ -36,28 +36,24 @@
         var isiOS = !! u.match(/(iphone|ipod|ipad|mac)/i);
 
         function openApp() {
-            //alert('1');
-            //alert(isAndroid);
-            //alert(isiOS);
             if (isAndroid) {
                 android1();
             }
             if (isiOS) {
                 ios();
             }
-            //alert("调用下载失败"); //此处弹窗时，是没有version参数，如果在app中打开，是会有这个参数的
         }
 
         function android1() {
             //如果是微信,直接下载
             if (isWeixin) {
-                window.location.href = "https://android.myapp.com/myapp/detail.htm?apkName=net.nbyjy.b2b&ADTAG=mobile "; /***Android移动端下载地址***/
+                window.location.href = "https://android.myapp.com/myapp/detail.htm?apkName=net.nbyjy.b2b&ADTAG=mobile"; /***Android移动端下载地址***/
             } else {
                 window.location = download_schema; /***打开app的协议，有安卓同事提供***/
                 window.setTimeout(function () {
                     //window.location.href = "Android下载地址";/***Android移动端下载地址***/
                     window.location.href = getVersionUrl; /***Android移动端下载地址***/
-                }, 3000);
+                }, 100);
             }
         }
 
