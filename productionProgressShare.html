@@ -53,11 +53,11 @@
             if (isWeixin) {
                 window.location.href = "https://android.myapp.com/myapp/detail.htm?apkName=net.nbyjy.b2b&ADTAG=mobile "; /***Android移动端下载地址***/
             } else {
-                window.location.href = download_schema; /***打开app的协议，有安卓同事提供***/
+                window.location = download_schema; /***打开app的协议，有安卓同事提供***/
                 window.setTimeout(function () {
                     //window.location.href = "Android下载地址";/***Android移动端下载地址***/
                     window.location.href = getVersionUrl; /***Android移动端下载地址***/
-                }, 100);
+                }, 500);
             }
         }
 
