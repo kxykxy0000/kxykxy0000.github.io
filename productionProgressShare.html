@@ -28,7 +28,7 @@
     <script type="text/javascript">
         var download_schema = 'nbyjy://callphone/startapp'; //app的协议有安卓同事提供，这里是用的淘宝
         var universal_link = 'https://itunes.apple.com/cn/app/%E9%92%89%E5%8D%95/id1459206673?mt=8';//ios下载地址
-        var getVersionUrl = 'https://android.myapp.com/myapp/detail.htm?apkName=net.nbyjy.b2b&ADTAG=mobile';//Android移动端下载地址
+        var getVersionUrl = 'https://yijiayi.oss-cn-shenzhen.aliyuncs.com/app-release.apk';//Android移动端下载地址
         var u = navigator.userAgent.toLocaleLowerCase();
         //console.log(u);
         var isWeixin = u.match(/MicroMessenger/i) == 'micromessenger'; //判断是不是微信浏览器
@@ -57,7 +57,7 @@
                 window.setTimeout(function () {
                     //window.location.href = "Android下载地址";/***Android移动端下载地址***/
                     window.location.href = getVersionUrl; /***Android移动端下载地址***/
-                }, 500);
+                }, 3000);
             }
         }
 
