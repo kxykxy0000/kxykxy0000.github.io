@@ -84,7 +84,13 @@ body {
     z-index: 999
 }
 
+table a:hover{
+    text-decoration:none;
+}
 
+table a{
+    text-decoration:none;
+}
 
 .header-img-describe {
     position: absolute;
@@ -139,7 +145,7 @@ body {
     width: 74%;
     margin-left: 13%;
     margin-right: 13%;
-    margin-top: 18%;
+    margin-top: 13%;
     border: 1px solid #c5c5c5;
     filter: alpha(opacity=90); /*IE*/
     -moz-opacity: 0.9; /*火狐*/
@@ -468,6 +474,10 @@ h5.line > span {
 
 .block a:hover {
     text-decoration: underline;
+}
+
+a:hover{
+    text-decoration:none;
 }
 
 .block span.rating {
