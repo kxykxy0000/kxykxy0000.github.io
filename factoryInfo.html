@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="css/960.css"/>
 
     <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/openAPP.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function(){
@@ -44,47 +45,6 @@
 
                 }
             });
-        }
-
-        function appLink(){
-            var download_schema = 'nbyjy://callphone/startapp'; //app的协议有安卓同事提供，这里是用的淘宝
-            var universal_link = 'www.baidu.com';
-            var getVersionUrl = 'www.weibo.com';//Android移动端下载地址
-            var u = navigator.userAgent.toLocaleLowerCase();
-//console.log(u);
-            var isWeixin = u.match(/MicroMessenger/i) == 'micromessenger'; //判断是不是微信浏览器
-            var isAndroid = u.indexOf('android') > -1 || u.indexOf('linux') > -1; //android终端或者uc浏览器
-            var isiOS = !! u.match(/(iphone|ipod|ipad|mac)/i);
-
-            function openApp() {
-                //alert('1');
-                //alert(isAndroid);
-                //alert(isiOS);
-                if (isAndroid) {
-                    android1();
-                }
-                if (isiOS) {
-                    ios();
-                }
-                //alert("调用下载失败"); //此处弹窗时，是没有version参数，如果在app中打开，是会有这个参数的
-            }
-
-            function android1() {
-                //如果是微信,直接下载
-                if (isWeixin) {
-                    window.location.href = "Android下载地址 "; /***Android移动端下载地址***/
-                } else {
-                    window.location.href = download_schema; /***打开app的协议，有安卓同事提供***/
-                    window.setTimeout(function () {
-                        //window.location.href = "Android下载地址";/***Android移动端下载地址***/
-                        window.location.href = getVersionUrl; /***Android移动端下载地址***/
-                    }, 100);
-                }
-            }
-
-            function ios() {
-                window.location.href = universal_link + "?schema=" + encodeURIComponent(download_schema);
-            }
         }
     </script>
 </head>
@@ -123,7 +83,7 @@
                 <tr>
                     <td rowspan="3" width="80px" height="80px" style="border-bottom: 0px;">
                         <div style="border-bottom: 0px solid #CCCCCC;background-color: #f0f0f0">
-                            <img src="images/logo2.png" alt="MyPassion" width="80px" height="80px"/>
+                            <img src="images/logo2.png" alt="工厂LOGO" width="80px" height="80px"/>
                         </div>
                     </td>
                     <td colspan="2">
@@ -284,14 +244,14 @@
 
     </div>
 
-    <div class="main-product-info" onclick="appLink()">
+    <div class="main-product-info">
         <table  cellspacing="0px" cellpadding="0"
                 style="border:0px;border-collapse:collapse;background-color: #ffd60c;height: 60px;">
-            <tr style="border: 1px solid #CCCCCC;">
+            <tr style="border: 1px solid #CCCCCC;" onclick="openApp()">
                 <td colspan="4" style="text-align: center;">
-                    <span style="color: #000;font-size: 16px;font-weight: bold">
-                        联系工厂
-                    </span>
+                <span style="color: #000;font-size: 16px;font-weight: bold">
+                    联系工厂
+                </span>
                 </td>
             </tr>
         </table>
