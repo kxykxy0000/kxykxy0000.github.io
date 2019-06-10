@@ -56,10 +56,14 @@
                 window.location.href = "https://android.myapp.com/myapp/detail.htm?apkName=net.nbyjy.b2b&ADTAG=mobile"; /***Android移动端下载地址***/
             } else {
                 window.location = download_schema; /***打开app的协议，有安卓同事提供***/
-                window.setTimeout(function () {
-                    //window.location.href = "Android下载地址";/***Android移动端下载地址***/
-                    window.location.href = getVersionUrl; /***Android移动端下载地址***/
-                }, 3000);
+                var clickedAt = +new Date;
+                setTimeout(function(){
+                    !window.document.webkitHidden && setTimeout(function(){
+                        if (+new Date - clickedAt < 2000){
+                            window.location.href = getVersionUrl;
+                        }
+                    }, 500);
+                }, 500)
             }
         }
 
