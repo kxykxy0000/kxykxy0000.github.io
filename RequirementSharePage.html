@@ -32,17 +32,39 @@
     </script>
 
     <script type="text/javascript">
-        function appLink(){
-            window.location = 'nbyjy://callphone/startapp';
-            // var clickedAt = +new Date;
-            // setTimeout(function(){
-            //     !window.document.webkitHidden && setTimeout(function(){
-            //         if (+new Date - clickedAt < 2000){
-            //             window.location = 'https://itunes.apple.com/us/app/zhe-jiang-yi-dong-shou-ji/id898243566#weixin.qq.com';
-            //         }
-            //     }, 500);
-            // }, 500)
+        var download_schema = 'nbyjy://callphone/startapp'; //app的协议有安卓同事提供，这里是用的淘宝
+        var universal_link = 'https://itunes.apple.com/cn/app/%E9%92%89%E5%8D%95/id1459206673?mt=8';//ios下载地址
+        var getVersionUrl = 'https://android.myapp.com/myapp/detail.htm?apkName=net.nbyjy.b2b&ADTAG=mobile';//Android移动端下载地址
+        var u = navigator.userAgent.toLocaleLowerCase();
+        //console.log(u);
+        var isWeixin = u.match(/MicroMessenger/i) == 'micromessenger'; //判断是不是微信浏览器
+        var isAndroid = u.indexOf('android') > -1 || u.indexOf('linux') > -1; //android终端或者uc浏览器
+        var isiOS = !! u.match(/(iphone|ipod|ipad|mac)/i);
 
+        function openApp() {
+            if (isAndroid) {
+                android1();
+            }
+            if (isiOS) {
+                ios();
+            }
+        }
+
+        function android1() {
+            //如果是微信,直接下载
+            if (isWeixin) {
+                window.location.href = "https://android.myapp.com/myapp/detail.htm?apkName=net.nbyjy.b2b&ADTAG=mobile"; /***Android移动端下载地址***/
+            } else {
+                window.location = download_schema; /***打开app的协议，有安卓同事提供***/
+                window.setTimeout(function () {
+                    //window.location.href = "Android下载地址";/***Android移动端下载地址***/
+                    window.location.href = getVersionUrl; /***Android移动端下载地址***/
+                }, 3000);
+            }
+        }
+
+        function ios() {
+            window.location.href = universal_link + "?schema=" + encodeURIComponent(download_schema);
         }
     </script>
 </head>
@@ -51,7 +73,6 @@
 
 
 <div class="main-container">
-
     <div class="main-under">
         <div class="main-under-div">
             <table bordercolor="#000000" cellspacing="1px" cellpadding="0"
@@ -239,7 +260,7 @@
     <div class="main-product-info" style="background-color: #FFFFFF;float: left;position:fixed;bottom:0;z-index:999">
         <table  cellspacing="0px" cellpadding="0"
                 style="border:0px;border-collapse:collapse;background-color: #ffd60c;height: 60px;">
-            <tr style="border: 1px solid #CCCCCC;">
+            <tr style="border: 1px solid #CCCCCC;" onclick="openApp()">
                 <td colspan="4" style="text-align: center;">
                     <span style="color: #000;font-size: 16px;font-weight: bold">
                         去报价
