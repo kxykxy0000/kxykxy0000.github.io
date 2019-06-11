@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--[if lt IE 7 ]>
 <html class="ie ie6" lang="zh_CN"> <![endif]-->
 <!--[if IE 7 ]>
@@ -21,55 +21,53 @@
     <link rel="stylesheet" type="text/css" href="css/960.css"/>
 
     <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/openAPP.js" charset="utf-8"></script>
+    <script src="js/getServiceData.js" charset="utf-8"></script>
 
-    <script>
-        function aa() {
-            $('#jglx').html('111111');
-            // $.ajax({
-            //     url:"/jquery/test1.txt",
-            // });
-        }
-    </script>
-
-    <script type="text/javascript">
-        var download_schema = 'nbyjy://callphone/startapp'; //app的协议有安卓同事提供，这里是用的淘宝
-        var universal_link = 'https://itunes.apple.com/cn/app/%E9%92%89%E5%8D%95/id1459206673?mt=8';//ios下载地址
-        var getVersionUrl = 'https://android.myapp.com/myapp/detail.htm?apkName=net.nbyjy.b2b&ADTAG=mobile';//Android移动端下载地址
-        var u = navigator.userAgent.toLocaleLowerCase();
-        //console.log(u);
-        var isWeixin = u.match(/MicroMessenger/i) == 'micromessenger'; //判断是不是微信浏览器
-        var isAndroid = u.indexOf('android') > -1 || u.indexOf('linux') > -1; //android终端或者uc浏览器
-        var isiOS = !! u.match(/(iphone|ipod|ipad|mac)/i);
-
-        function openApp() {
-            if (isAndroid) {
-                android1();
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+            var param = window.location.search;
+            var str = param.replace('?order=','');
+            var order = JSON.parse(decodeURI(str));
+            var detail = order.details;
+            console.log(order);
+            var belongTo = order.belongTo;
+            $('#factoryName').html(belongTo.name);
+            $('#factoryContactPerson').html(belongTo.contactPerson);
+            $('#productName').html(detail.productName);
+            $('#productSKU').html(detail.productSkuID);
+            $('#category').html(detail.category.name);
+            $('#count').html(detail.expectedMachiningQuantity+'件');
+            $('#maxExpectedPrice').html(detail.maxExpectedPrice);
+            $('#machiningType').html(detail.machiningType);
+            $('#expectedDeliveryDate').html(getLocalTime(detail.expectedDeliveryDate));
+            var isProofingNeeded = '';
+            var isSamplesNeeded = '';
+            var isInvoiceNeeded = '';
+            if(detail.proofingNeeded){
+                isProofingNeeded = '是';
+            }else{
+                isProofingNeeded = '否';
             }
-            if (isiOS) {
-                ios();
+            if(detail.samplesNeeded){
+                isSamplesNeeded = '是';
+            }else{
+                isSamplesNeeded = '否';
             }
-        }
-
-        function android1() {
-            //如果是微信,直接下载
-            if (isWeixin) {
-                window.location.href = "https://android.myapp.com/myapp/detail.htm?apkName=net.nbyjy.b2b&ADTAG=mobile"; /***Android移动端下载地址***/
-            } else {
-                window.location = download_schema; /***打开app的协议，有安卓同事提供***/
-                var clickedAt = +new Date;
-                setTimeout(function(){
-                    !window.document.webkitHidden && setTimeout(function(){
-                        if (+new Date - clickedAt < 2000){
-                            window.location.href = getVersionUrl;
-                        }
-                    }, 500);
-                }, 500)
+            if(detail.invoiceNeeded){
+                isInvoiceNeeded = '是';
+            }else{
+                isInvoiceNeeded = '否';
             }
-        }
-
-        function ios() {
-            window.location.href = universal_link + "?schema=" + encodeURIComponent(download_schema);
-        }
+            $('#proofingNeeded').html(isProofingNeeded);
+            $('#samplesNeeded').html(isSamplesNeeded);
+            $('#productiveOrientations').html(detail.productiveOrientations);
+            $('#invoiceNeeded').html(isInvoiceNeeded);
+            $('#remarks').html(order.remarks);
+            $('#code').html(order.code);
+            $('#creationTime').html(getLocalTime(order.creationtime));
+            $('#productPhoto').attr('src', 'http://sc.nbyjy.net'+detail.pictures[0].url);
+        });
     </script>
 </head>
 
@@ -79,43 +77,49 @@
 <div class="main-container">
     <div class="main-under">
         <div class="main-under-div">
-            <table bordercolor="#000000" cellspacing="1px" cellpadding="0"
-                   style="border-collapse:collapse;height: 80px;margin-bottom: 0;background-color: #FFFFFF">
+            <table cellspacing="0px" cellpadding="0" style="color: #000;">
                 <tr>
                     <td colspan="2" style="border-bottom:0px;">
-                        <span style="color: #000;font-size: 14px">
-                            轻柔工厂
+                        <span style="color: #000;font-size: 14px" id="factoryName">
+                            ****
                         </span>
                     </td>
-                    <td style="text-align: right;border-bottom:0px;">
+                    <td style="text-align: right;">
                         <img src="images/sms-4.ico" height="15" width="15"/>
-                        <span style="color: #6c6c6c">李小姐</span>
+                        <span style="color: #6c6c6c" id="factoryContactPerson">***</span>
                     </td>
                 </tr>
                 <tr bgcolor="#f0f0f0">
-                    <td rowspan="3" width="60px" height="60px" style="border-bottom: 0px;">
+                    <td rowspan="3" width="60px" height="60px" >
                         <div style="border-bottom: 0px solid #CCCCCC;background-color: #f0f0f0">
-                            <img src="images/logo2.png" alt="MyPassion" width="60px" height="60px"/>
+                            <img id="productPhoto" src="" alt="MyPassion" width="60px" height="60px" onerror="this.src='images/logo2.png'"/>
                         </div>
                     </td>
-                    <td style="border-bottom:0px;line-height:0px;" height="10px;" colspan="2">
-                        <span style="color: #000;font-size: 14px">
-                            超级宽松女式运动服
-                        </span>
-                    </td>
-                </tr>
-                <tr bgcolor="#f0f0f0" style="max-height: 30px">
-                    <td style="border-bottom:0px;line-height:0px;"  colspan="2">
-                            <span style="color: #000;background-color:gainsboro;">
-                            货号：41564131313
+                    <td colspan="2">
+                        <span id="productName" style="color: #000;font-size: 14px">
+                            *****
                         </span>
                     </td>
                 </tr>
                 <tr bgcolor="#f0f0f0">
-                    <td style="border-bottom:0px;line-height:0px;" colspan="2">
-                            <span style="color: #000;background-color: lightpink;">
-                            衬衫   6件
+                    <td colspan="2" >
+                        <div style="height: 20px; width: 150px;text-align: center;border-radius: 20px;background-color:#dcdcdc;">
+                            <span id="productSKU">
+                                货号：********
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+                <tr bgcolor="#f0f0f0">
+                    <td colspan="2">
+                        <div style="height: 20px; width: 100px;text-align: center;border-radius: 20px;background-color:#fbc4c4;">
+                        <span id="category">
+                            ****
                         </span>
+                        <span id="count">
+                            ****
+                        </span>
+                        </div>
                     </td>
                 </tr>
             </table>
@@ -126,87 +130,87 @@
         <div class="main-above-div2">
             <table class="main-order-info-tab" frame="void"
                    border="0px" bordercolor="#000000" cellspacing="0px" cellpadding="0"
-                   style="border:0px;border-collapse:collapse;height: 200px;background-color: #FFFFFF">
+                   style="font-size: 14px;color: #000;">
                 <tr style="">
-                    <td style="border-left: 0px; border-right: 0px; ">
-                        <span style="color: #000;font-size: 14px;">
+                    <td>
+                        <span>
                             期望价格
                         </span>
                     </td>
                     <td align="right" style="border-left: 0px; border-right: 0px;">
-                        <span style="color: #000;font-size: 14px;">
+                        <span id="maxExpectedPrice">
                             *****
                         </span>
                     </td>
                 </tr>
                 <tr>
-                    <td style="border-left: 0px; border-right: 0px; ">
-                        <span style="color: #000;font-size: 14px;">
+                    <td>
+                        <span>
                             加工类型
                         </span>
                     </td>
-                    <td align="right" style="border-left: 0px; border-right: 0px; ">
-                        <span style="color: #000;font-size: 14px;">
+                    <td align="right">
+                        <span id="machiningType">
                             *****
                         </span>
                     </td>
                 </tr>
                 <tr>
-                    <td style="border-left: 0px; border-right: 0px; ">
-                        <span style="color: #000;font-size: 14px;">
+                    <td>
+                        <span>
                             交货时间
                         </span>
                     </td>
-                    <td align="right" style="border-left: 0px; border-right: 0px; ">
-                        <span style="color: #000;font-size: 14px;">
+                    <td align="right">
+                        <span id="expectedDeliveryDate">
                             *****
                         </span>
                     </td>
                 </tr>
                 <tr>
-                    <td style="border-left: 0px; border-right: 0px; ">
-                        <span style="color: #000;font-size: 14px;">
+                    <td>
+                        <span>
                             是否需要打样
                         </span>
                     </td>
-                    <td align="right" style="border-left: 0px; border-right: 0px; ">
-                        <span style="color: #000;font-size: 14px;">
+                    <td align="right" >
+                        <span id="proofingNeeded">
                             *****
                         </span>
                     </td>
                 </tr>
                 <tr>
-                    <td style="border-left: 0px; border-right: 0px; ">
-                        <span style="color: #000;font-size: 14px;">
+                    <td>
+                        <span>
                             是否提供样衣
                         </span>
                     </td>
-                    <td align="right" style="border-left: 0px; border-right: 0px; ">
-                        <span style="color: #000;font-size: 14px;">
+                    <td align="right">
+                        <span id="samplesNeeded">
                             *****
                         </span>
                     </td>
                 </tr>
                 <tr>
-                    <td style="border-left: 0px; border-right: 0px; ">
-                        <span style="color: #000;font-size: 14px;">
+                    <td>
+                        <span>
                             生产地区
                         </span>
                     </td>
-                    <td align="right" style="border-left: 0px; border-right: 0px; ">
-                        <span style="color: #000;font-size: 14px;">
+                    <td align="right">
+                        <span id="productiveOrientations">
                             *****
                         </span>
                     </td>
                 </tr>
                 <tr>
-                    <td style="border-left: 0px; border-right: 0px;border-bottom: 1px;">
-                        <span style="color: #000;font-size: 14px;">
+                    <td>
+                        <span>
                             是否开票
                         </span>
                     </td>
-                    <td align="right" style="border-left: 0px; border-right: 0px;border-bottom: 1px;">
-                        <span style="color: #000;font-size: 14px;">
+                    <td align="right" >
+                        <span id="invoiceNeeded">
                             *****
                         </span>
                     </td>
@@ -216,33 +220,38 @@
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2" style="border-left: 0px; border-right: 0px; border-bottom: 1px;">
-                        <span style="color: #000;font-size: 14px;">
+                    <td colspan="2">
+                        <span>
                             备注
                         </span>
                     </td>
                 </tr>
                 <tr>
-                    <td rowspan="4" colspan="2" style="border-left: 0px; border-right: 0px; border-bottom: 1px;">
-                        <span style="color: #000;font-size: 14px;">
+                    <td rowspan="4" colspan="2">
+                        <span id="remarks">
                             *******************************
                         </span>
                     </td>
                 </tr>
                 <tr></tr><tr></tr><tr></tr><tr></tr>
-
                 <tr style="background-color: #f0f0f0;height: 5px;padding: 0px;">
                     <td colspan="2" style="border: 0px;height: 5px;padding: 0px;">
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="2" style="border-left: 0px; border-right: 0px; border-bottom: 1px;">
-                        <span style="color: #000;font-size: 14px;">
-                            需求订单号：TRO000001****
+                    <td colspan="2">
+                        <span>
+                            需求订单号：
+                        </span>
+                        <span id="code">
+                            ***********
                         </span>
                         <br>
-                        <span style="color: #000;font-size: 14px;">
-                            发布时间：2019年6月4日
+                        <span>
+                            发布时间：
+                        </span>
+                        <span id="creationTime">
+                            ***********
                         </span>
                     </td>
                 </tr>
@@ -253,13 +262,6 @@
 
             </table>
         </div>
-    </div>
-    <div class="main-product-info" style="height: 2px;width: 100%;float: left;">
-        <table>
-            <tr>
-                <td></td>
-            </tr>
-        </table>
     </div>
     <div class="main-product-info" style="background-color: #FFFFFF;float: left;position:fixed;bottom:0;z-index:999">
         <table  cellspacing="0px" cellpadding="0"
