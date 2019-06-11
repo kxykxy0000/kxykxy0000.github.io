@@ -32,7 +32,7 @@
                     //测试环境
                     url: 'https://47.106.112.137:9002/djwebservices/v2/b2b-apparel-zh/orders/requirement/' + code + '/withoutLogin',
                     type: 'GET',
-                    contentType: 'application/json; charset=utf-8',
+                    contentType: 'jsonp',
                     success: function (data) {
                         var order = data;
                         if (order != null) {
