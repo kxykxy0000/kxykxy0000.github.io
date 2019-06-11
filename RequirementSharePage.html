@@ -27,8 +27,7 @@
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function() {
             var code = GetQueryString('code');
-            var type = GetQueryString('type');
-            if(code != null && type != null) {
+            if(code != null) {
                 $.ajax({
                     //测试环境
                     url: 'https://47.106.112.137:9002/djwebservices/v2/b2b-apparel-zh/orders/requirement/' + code + '/withoutLogin',
