@@ -26,47 +26,109 @@
 
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function() {
-            var param = window.location.search;
-            var str = param.replace('?order=','');
-            var order = JSON.parse(decodeURI(str));
-            var detail = order.details;
-            console.log(order);
-            var belongTo = order.belongTo;
-            $('#factoryName').html(belongTo.name);
-            $('#factoryContactPerson').html(belongTo.contactPerson);
-            $('#productName').html(detail.productName);
-            $('#productSKU').html(detail.productSkuID);
-            $('#category').html(detail.category.name);
-            $('#count').html(detail.expectedMachiningQuantity+'件');
-            $('#maxExpectedPrice').html(detail.maxExpectedPrice);
-            $('#machiningType').html(detail.machiningType);
-            $('#expectedDeliveryDate').html(getLocalTime(detail.expectedDeliveryDate));
-            var isProofingNeeded = '';
-            var isSamplesNeeded = '';
-            var isInvoiceNeeded = '';
-            if(detail.proofingNeeded){
-                isProofingNeeded = '是';
-            }else{
-                isProofingNeeded = '否';
+            var code = GetQueryString('code');
+            var type = GetQueryString('type');
+            if(code != null && type != null) {
+                $.ajax({
+                    //测试环境
+                    url: 'https://47.106.112.137:9002/djwebservices/v2/b2b-apparel-zh/orders/requirement/' + code + '/withoutLogin',
+                    type: 'GET',
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        var order = data;
+                        if (order != null) {
+                            var detail = order['details'];
+                            var belongTo = order['belongTo'];
+                            var category = order['details'].category;
+                            var pictures = order['details'].pictures;
+                            $('#factoryName').html(belongTo.name);
+                            $('#factoryContactPerson').html(belongTo.contactPerson);
+                            $('#productName').html(detail.productName);
+                            $('#productSKU').html(detail.productSkuID);
+                            $('#category').html(category.name);
+                            $('#count').html(detail.expectedMachiningQuantity + '件');
+                            $('#maxExpectedPrice').html(detail.maxExpectedPrice);
+                            $('#machiningType').html(detail.machiningType);
+                            $('#expectedDeliveryDate').html(getLocalTime(detail.expectedDeliveryDate));
+                            var isProofingNeeded = '';
+                            var isSamplesNeeded = '';
+                            var isInvoiceNeeded = '';
+                            if (detail.proofingNeeded) {
+                                isProofingNeeded = '是';
+                            } else {
+                                isProofingNeeded = '否';
+                            }
+                            if (detail.samplesNeeded) {
+                                isSamplesNeeded = '是';
+                            } else {
+                                isSamplesNeeded = '否';
+                            }
+                            if (detail.invoiceNeeded) {
+                                isInvoiceNeeded = '是';
+                            } else {
+                                isInvoiceNeeded = '否';
+                            }
+                            $('#proofingNeeded').html(isProofingNeeded);
+                            $('#samplesNeeded').html(isSamplesNeeded);
+                            $('#productiveOrientations').html(detail.productiveOrientations);
+                            $('#invoiceNeeded').html(isInvoiceNeeded);
+                            $('#remarks').html(order.remarks);
+                            $('#code').html(order.code);
+                            $('#creationTime').html(getLocalTime(order.creationtime));
+                            //测试环境图片
+                            $('#productPhoto').attr('src', 'http://sc.nbyjy.net' + pictures[0].url);
+                        }
+                        // window.location.href = 'RequirementSharePage.html?order='+ order;
+                    },
+                    error: function () {
+                        alert('页面出错啦！');
+                    }
+                });
             }
-            if(detail.samplesNeeded){
-                isSamplesNeeded = '是';
-            }else{
-                isSamplesNeeded = '否';
-            }
-            if(detail.invoiceNeeded){
-                isInvoiceNeeded = '是';
-            }else{
-                isInvoiceNeeded = '否';
-            }
-            $('#proofingNeeded').html(isProofingNeeded);
-            $('#samplesNeeded').html(isSamplesNeeded);
-            $('#productiveOrientations').html(detail.productiveOrientations);
-            $('#invoiceNeeded').html(isInvoiceNeeded);
-            $('#remarks').html(order.remarks);
-            $('#code').html(order.code);
-            $('#creationTime').html(getLocalTime(order.creationtime));
-            $('#productPhoto').attr('src', 'http://sc.nbyjy.net'+detail.pictures[0].url);
+            // var param = window.location.search;
+            // console.log(param);
+            // var str = param.replace('?order=','');
+            // var order = JSON.parse(decodeURI(str));
+            // if(order != null){
+            //     var detail = order.details;
+            //     console.log(order);
+            //     var belongTo = order.belongTo;
+            //     $('#factoryName').html(belongTo.name);
+            //     $('#factoryContactPerson').html(belongTo.contactPerson);
+            //     $('#productName').html(detail.productName);
+            //     $('#productSKU').html(detail.productSkuID);
+            //     $('#category').html(detail.category.name);
+            //     $('#count').html(detail.expectedMachiningQuantity+'件');
+            //     $('#maxExpectedPrice').html(detail.maxExpectedPrice);
+            //     $('#machiningType').html(detail.machiningType);
+            //     $('#expectedDeliveryDate').html(getLocalTime(detail.expectedDeliveryDate));
+            //     var isProofingNeeded = '';
+            //     var isSamplesNeeded = '';
+            //     var isInvoiceNeeded = '';
+            //     if(detail.proofingNeeded){
+            //         isProofingNeeded = '是';
+            //     }else{
+            //         isProofingNeeded = '否';
+            //     }
+            //     if(detail.samplesNeeded){
+            //         isSamplesNeeded = '是';
+            //     }else{
+            //         isSamplesNeeded = '否';
+            //     }
+            //     if(detail.invoiceNeeded){
+            //         isInvoiceNeeded = '是';
+            //     }else{
+            //         isInvoiceNeeded = '否';
+            //     }
+            //     $('#proofingNeeded').html(isProofingNeeded);
+            //     $('#samplesNeeded').html(isSamplesNeeded);
+            //     $('#productiveOrientations').html(detail.productiveOrientations);
+            //     $('#invoiceNeeded').html(isInvoiceNeeded);
+            //     $('#remarks').html(order.remarks);
+            //     $('#code').html(order.code);
+            //     $('#creationTime').html(getLocalTime(order.creationtime));
+            //     $('#productPhoto').attr('src', 'http://sc.nbyjy.net'+detail.pictures[0].url);
+            // }
         });
     </script>
 </head>
