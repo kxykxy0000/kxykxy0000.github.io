@@ -150,6 +150,7 @@ table a{
     filter: alpha(opacity=90); /*IE*/
     -moz-opacity: 0.9; /*火狐*/
     opacity: 0.9; /*opera (CSS3标准)*/
+    border-radius:8px;
 }
 
 .main-above-div {
@@ -1293,17 +1294,14 @@ span.highlight {
 table {
     width: 100%;
     text-align: left;
-    border-spacing: 0;
 }
 
 table th {
-    background: #171717;
     padding: 10px;
 }
 
 table td {
-    border-bottom: 1px solid #f0f0f0;
-    padding: 10px;
+    padding: 5px;
 }
 
 /*------------------------------------------------------------------*/
