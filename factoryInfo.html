@@ -24,28 +24,26 @@
     <script src="js/openAPP.js"></script>
 
     <script type="text/javascript">
-        $(document).ready(function(){
+        $(document).ready(function() {
 
-        });
+            var client = new XMLHttpRequest();
+            client.withCredentials = false;
+            client.open("GET", "http://47.106.112.137/b2b/factories/GC00000002/withoutLogin");
+            // client.open("POST", 'https://47.106.112.137:9002/djwebservices/v2/b2b-apparel-zh/orders/requirement/TRO00025021/withoutLogin');
 
-        //请求后台获取数据
-        function getFactoryInfo(){
-            var param = {
-                "OrderStatus":["PENDING_QUOTE"]
+            client.setRequestHeader('Content-Type','text/json');
+            client.onload = function() {
+                    var text = client.responseText;
+                    var data = JSON.parse(text);
+                console.log(data.name);
+                $('#factoryName').html(data.name);
+             };
+            client.onerror = function() {
+                    alert('页面出错啦！');
             };
-            $.ajax({
-                url:'https://47.106.112.137:9002/djwebservices/v2/b2b-apparel-zh/orders/requirement/countByStatuses',
-                data:JSON.stringify(param),
-                type:'POST',
-                contentType:'application/json',
-                success:function(data){
-                    alert(data);
-                },
-                error:function(data){
 
-                }
-            });
-        }
+            client.send();
+        });
     </script>
 </head>
 
@@ -79,7 +77,7 @@
     <div class="main-under-factory">
         <div class="main-under-factory-info">
             <table cellspacing="0px" cellpadding="0"
-                   style="border-collapse:collapse;margin-bottom: 0;">
+                   style="border-collapse:collapse;margin-bottom: 0; color: #000;font-size: 14px">
                 <tr>
                     <td rowspan="3" width="80px" height="80px" style="border-bottom: 0px;">
                         <div style="border-bottom: 0px solid #CCCCCC;background-color: #f0f0f0">
@@ -87,7 +85,7 @@
                         </div>
                     </td>
                     <td colspan="2">
-                        <span style="color: #000;font-size: 14px">
+                        <span id="factoryName">
                             广州轻柔服装加工厂
                         </span>
                     </td>
